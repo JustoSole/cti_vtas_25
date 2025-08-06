@@ -7,7 +7,7 @@
 
 ### 🔐 **Credenciales de Acceso**
 - **Contraseña de la App:** `CotiVentasB2B2025`
-- **API Key:** `AIzaSyDZ4RCI-w0MkxkdYbdFjiT1wkLh9H-BqCk`
+- **API Key:** `YOUR_GOOGLE_PLACES_API_KEY_HERE`
 - **Project ID:** `bot-b2b-places`
 
 ### 🛡️ **Seguridad Implementada**
@@ -58,7 +58,7 @@ Copiar exactamente este contenido en la sección "Secrets":
 admin_password = "CotiVentasB2B2025"
 
 [google]
-places_api_key = "AIzaSyDZ4RCI-w0MkxkdYbdFjiT1wkLh9H-BqCk"
+places_api_key = "YOUR_GOOGLE_PLACES_API_KEY_HERE"
 
 [google_sheets]
 spreadsheet_id = "1KjQMeQQ_3EO0MtfrSO7waTHtiZdTb7futHIA4yk6Xf8"
