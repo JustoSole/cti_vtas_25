@@ -19,7 +19,7 @@ from googleapiclient.errors import HttpError
 
 # --- CONFIGURACIÓN ---
 # 1. Google Places API Key
-GOOGLE_API_KEY = "AIzaSyDZ4RCI-w0MkxkdYbdFjiT1wkLh9H-BqCk"
+GOOGLE_API_KEY = "YOUR_GOOGLE_PLACES_API_KEY_HERE"
 
 # Test data
 TEST_QUERY = "restaurant"

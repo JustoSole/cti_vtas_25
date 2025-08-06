@@ -31,7 +31,7 @@ def get_api_keys():
     except (KeyError, AttributeError):
         # Fallback a valores hardcodeados para desarrollo
         logger.warning("⚠️ Usando API key hardcodeada - configura st.secrets para producción")
-        google_api_key = "AIzaSyDZ4RCI-w0MkxkdYbdFjiT1wkLh9H-BqCk"
+        google_api_key = "YOUR_GOOGLE_PLACES_API_KEY_HERE"
         return google_api_key
 
 def clean_phone_number(phone):

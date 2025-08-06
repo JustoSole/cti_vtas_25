@@ -66,4 +66,7 @@ logs/
 *.backup
 
 # Archivos temporales de Streamlit
-.streamlit/config.toml.bak 
+.streamlit/config.toml.bak .env
+google_credentials_coti.json
+.streamlit/secrets.toml
+DEPLOYMENT_GUIDE.md
