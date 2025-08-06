@@ -130,7 +130,7 @@ def separate_social_media_data(social_media_string):
     
     return facebook_url, instagram_url
 
-def clean_dataframe_for_sheets(df, search_query=""):
+def clean_dataframe_for_sheets(df, search_query="", search_location=""):
     """
     Limpia el DataFrame eliminando valores NaN y preparándolo para Google Sheets
     """
@@ -142,7 +142,11 @@ def clean_dataframe_for_sheets(df, search_query=""):
     # Agregar información de la búsqueda realizada
     if search_query:
         df_clean['search_query'] = search_query
-        logger.info(f"🔍 Búsqueda agregada: {search_query}")
+        logger.info(f"🔍 Tipo de negocio agregado: {search_query}")
+    
+    if search_location:
+        df_clean['search_location'] = search_location
+        logger.info(f"📍 Lugar buscado agregado: {search_location}")
     
     # Limpiar formato de teléfonos
     if 'nationalPhoneNumber' in df_clean.columns:
@@ -356,7 +360,7 @@ def main(query="cotillones", location="Once, Buenos Aires, Argentina", max_resul
         # --- LIMPIEZA FINAL DE DATOS ---
         logger.info("\n--- LIMPIEZA FINAL DE DATOS ---")
         
-        final_df = clean_dataframe_for_sheets(scraped_df, search_query=query)
+        final_df = clean_dataframe_for_sheets(scraped_df, search_query=query, search_location=location)
 
         # --- PASO 3: SUBIR DATOS A GOOGLE SHEETS ---
         logger.info("\n--- INICIANDO PASO 3: Google Sheets Manager ---")

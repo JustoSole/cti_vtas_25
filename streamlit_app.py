@@ -289,7 +289,16 @@ def show_dashboard():
                 if stats['recent_activity']:
                     for activity in stats['recent_activity'][:5]:
                         fecha = activity['date'][:16] if len(activity['date']) > 16 else activity['date']
-                        st.markdown(f"• **{activity['query']}** - {fecha}")
+                        business_type = activity.get('business_type', activity.get('query', 'N/A'))
+                        location = activity.get('location', 'No especificado')
+                        
+                        # Mostrar búsqueda de forma más clara
+                        if location and location != 'No especificado':
+                            search_desc = f"**{business_type}** en *{location}*"
+                        else:
+                            search_desc = f"**{business_type}**"
+                        
+                        st.markdown(f"• {search_desc} - {fecha}")
                 else:
                     st.info("No hay actividad reciente registrada")
             

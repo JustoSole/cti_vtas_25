@@ -48,7 +48,8 @@ class GoogleSheetsManager:
             'scraped_emails': 'Emails Encontrados',
             'facebook_url': 'Facebook',
             'instagram_url': 'Instagram',
-            'search_query': 'Búsqueda Realizada',
+            'search_query': 'Tipo de Negocio',
+            'search_location': 'Lugar Buscado',
             'extraction_date': 'Fecha Extracción'
         }
         
@@ -294,16 +295,36 @@ class GoogleSheetsManager:
                 # Obtener las 5 fechas más recientes
                 recent_data = existing_data.sort_values('extraction_date', ascending=False).head(50)
                 
-                # Últimas búsquedas únicas
+                # Últimas búsquedas únicas (mostrar tipo de negocio + lugar)
                 if 'search_query' in recent_data.columns:
-                    last_searches = recent_data['search_query'].dropna().unique()[:5].tolist()
+                    # Combinar tipo de negocio con lugar para búsquedas más descriptivas
+                    combined_searches = []
+                    for _, row in recent_data.iterrows():
+                        business_type = row.get('search_query', '')
+                        location = row.get('search_location', '')
+                        if business_type:
+                            if location:
+                                combined_search = f"{business_type} en {location}"
+                            else:
+                                combined_search = business_type
+                            if combined_search not in combined_searches:
+                                combined_searches.append(combined_search)
+                        if len(combined_searches) >= 5:
+                            break
+                    last_searches = combined_searches
                 
-                # Actividad reciente (últimas 5 entradas con fecha y búsqueda)
+                # Actividad reciente (últimas 5 entradas con fecha, tipo de negocio y lugar)
                 for _, row in recent_data.head(5).iterrows():
                     date = row.get('extraction_date', '')
-                    query = row.get('search_query', '')
-                    if date and query:
-                        recent_activity.append({'date': date, 'query': query})
+                    business_type = row.get('search_query', '')
+                    location = row.get('search_location', '')
+                    if date and business_type:
+                        activity_entry = {
+                            'date': date, 
+                            'business_type': business_type,
+                            'location': location if location else 'No especificado'
+                        }
+                        recent_activity.append(activity_entry)
             
             return {
                 'total_records': total_records,
