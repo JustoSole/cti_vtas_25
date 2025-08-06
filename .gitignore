@@ -1,0 +1,69 @@
+# Archivos sensibles - NO subir a GitHub
+.env
+.streamlit/secrets.toml
+google_credentials.json
+google_credentials_coti.json
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Archivos de prueba y desarrollo
+test_*.py
+*_test.py
+test_output/
+temp/
+tmp/
+
+# Archivos de salida CSV (opcional - comentar si quieres incluirlos)
+*.csv
+output/
+results/
+
+# Archivos del sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Archivos de backup
+*.bak
+*.backup
+
+# Archivos temporales de Streamlit
+.streamlit/config.toml.bak 
